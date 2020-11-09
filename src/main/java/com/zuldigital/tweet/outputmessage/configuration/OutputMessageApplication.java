@@ -18,6 +18,9 @@ public class OutputMessageApplication {
 		TweetMessageUserCase tweetUserCase = app.getBean(TweetMessageUserCase.class);
 
 		printTweetMessageConsole(tweetUserCase);
+
+		System.exit(0);
+
 	}
 
 	private static void printTweetMessageConsole(TweetMessageUserCase tweetUserCase){
@@ -29,10 +32,13 @@ public class OutputMessageApplication {
 				System.out.printf(tweet.getMessage());
 				int index = 1;
 				for(String message: tweet.getMessageSliced()) {
-					System.out.printf("Tweet #%d: %s\n",index,message);
+					System.out.printf("\nTweet #%d: %s",index,message);
 					index++;
 				}
+				System.out.print("\n----------------------x-------------------\n");
 			}
+
+			System.out.println("THANK YOU!");
 		}
 	}
 }

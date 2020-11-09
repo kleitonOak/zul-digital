@@ -12,11 +12,14 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-@AllArgsConstructor
 public class TweetClient {
     private RestTemplate restTemplate;
 
-    @Value("$dataproviders.rest.tweet}")
+    public TweetClient(RestTemplate restTemplate){
+        this.restTemplate = restTemplate;
+    }
+
+    @Value("${dataproviders.rest.tweet}")
     private String tweetUrl;
 
     public List<TweetDto> getTweet(String token){
@@ -24,7 +27,7 @@ public class TweetClient {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.add("Authorization", token);
         HttpEntity request = new HttpEntity(headers);
-        ResponseEntity<TweetDto[]> response = this.restTemplate.exchange(tweetUrl, HttpMethod.GET,request , TweetDto[].class);
+        ResponseEntity<TweetDto[]> response = this.restTemplate.exchange(tweetUrl, HttpMethod.GET, request , TweetDto[].class);
         if(response.getStatusCode().is2xxSuccessful()){
             return Arrays.asList(response.getBody().clone());
         }

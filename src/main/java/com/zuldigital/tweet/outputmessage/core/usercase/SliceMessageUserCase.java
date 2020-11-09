@@ -18,7 +18,7 @@ public class SliceMessageUserCase {
     private static final Integer LENGTH = 45;
 
     public Tweet sliceMessage(Tweet unprocessedTweet){
-        if(Objects.nonNull(unprocessedTweet) && StringUtils.isEmpty(unprocessedTweet.getMessage())){
+        if(Objects.nonNull(unprocessedTweet) && !StringUtils.isEmpty(unprocessedTweet.getMessage())){
             int index = 0;
             List<String> outputList = new ArrayList<>();
             while (index < unprocessedTweet.getMessage().length()) {
