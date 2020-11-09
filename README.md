@@ -55,6 +55,11 @@ On console:
 
 ## Run the project
 
+The Dockerfile needs to be executed with the following commands and, at the end of the execution, it needs to print the formated output.
+
+* docker build -t zuldigital/engineer-exam .
+* docker run --rm zuldigital/engineer-exam
+
 On console:
 `./gradlew bootRun`
 
